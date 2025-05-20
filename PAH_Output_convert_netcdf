@@ -1,0 +1,39 @@
+source /Users/jahidulislam/xbpch-env/bin/activate
+python
+import xbpch
+ds = xbpch.open_bpchdataset(
+    "/Users/jahidulislam/Downloads/GeoHealth_Sup/GC_run_directories/rundir_200220_A/geosfp_4x5_pah_FRESH/ctm.201401",
+    diaginfo_file="/Users/jahidulislam/Downloads/GeoHealth_Sup/GC_run_directories/rundir_200220_A/geosfp_4x5_pah_FRESH/diaginfo.dat",
+    tracerinfo_file="/Users/jahidulislam/Downloads/GeoHealth_Sup/GC_run_directories/rundir_200220_A/geosfp_4x5_pah_FRESH/tracerinfo.dat")
+print(ds)
+import numpy as np
+import numpy as np
+def clean_encoding_attrs(ds):
+    for var in ds.data_vars:
+        # Clean variable attributes
+        new_attrs = {}
+        for key, val in ds[var].attrs.items():
+            if key in ["scale_factor", "add_offset", "units"]:
+                continue
+            if isinstance(val, (bool, np.bool_)):  # Handle boolean values
+                new_attrs[key] = str(val)
+            else:
+                new_attrs[key] = val
+        ds[var].attrs = new_attrs
+
+    for coord in ds.coords:
+        # Clean coordinate attributes
+        new_attrs = {}
+        for key, val in ds[coord].attrs.items():
+            if key in ["scale_factor", "add_offset", "units"]:
+                continue
+            if isinstance(val, (bool, np.bool_)):  # Handle boolean values
+                new_attrs[key] = str(val)
+            else:
+                new_attrs[key] = val
+        ds[coord].attrs = new_attrs
+
+    return ds
+clean_ds = clean_encoding_attrs(ds)
+clean_ds.to_netcdf("/Users/jahidulislam/Downloads/GeoHealth_Sup/GC_run_dire\
+ctories/rundir_200220_A/geosfp_4x5_pah_FRESH/output_from_bpch.nc")
