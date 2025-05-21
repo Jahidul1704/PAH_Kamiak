@@ -3,7 +3,8 @@
 Start by copying the GEOS-Chem source code and run directory to your working location:
 
 'cp -r /path/to/GCClassic /path/to/my_working_directory/GCClassic'
-'cp -r /path/to/RunDir /path/to/my_working_directory/RunDir'
+
+"cp -r /path/to/RunDir /path/to/my_working_directory/RunDir"
 
 Replace '/path/to/...' with your actual directory paths.
 # Step 2: Configure the Run Directory
