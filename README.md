@@ -64,7 +64,9 @@ Rename the restart file to match your start date:
 
 mv GC_restart.20190701_0000z.nc4 GC_restart.YYYYMMDD_0000z.nc4
 # Step 8: Create a Batch Script
-# Step 9: Submit Your Job
+# Step 9: Delete existing diaginfo.dat and tracerinfo.dat
+rm diaginfo.dat tracerinfo.dat
+# Step 10: Submit Your Job
 
 
 
