@@ -1,4 +1,4 @@
-# Full Workflow: Running GEOS-Chem on Kamiak!
+# Full Workflow: Running GEOS-Chem for PAH on Kamiak!
 # Step 1: Copy the Source Code and Run Directory
 Start by copying the GEOS-Chem source code and run directory to your working location:
 
